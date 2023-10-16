@@ -5,17 +5,10 @@
     <p>最小与ダメージ：{{ to_min }}</p>
     <p>最大被ダメージ：{{ from_max }}</p>
     <p>最小被ダメージ：{{ from_min }}</p>
-    <p>先行率：{{ m_spd[c_spd] }}%</p>
     <template v-if="is_spd_seed_shown">
-      <p>先行率（種1）：{{ m_spd[c_spd + 1] }}%</p>
-      <p>先行率（種2）：{{ m_spd[c_spd + 2] }}%</p>
-      <p>先行率（種3）：{{ m_spd[c_spd + 3] }}%</p>
-      <p>先行率（種4）：{{ m_spd[c_spd + 4] }}%</p>
-      <p>先行率（種5）：{{ m_spd[c_spd + 5] }}%</p>
-      <p>先行率（種6）：{{ m_spd[c_spd + 6] }}%</p>
-      <p>先行率（種7）：{{ m_spd[c_spd + 7] }}%</p>
-      <p>先行率（種8）：{{ m_spd[c_spd + 8] }}%</p>
-      <p>先行率（種9）：{{ m_spd[c_spd + 9] }}%</p>
+      <p v-for="n of 9" :key="n">
+        先行率（種{{ n }}）：{{ m_spd[c_spd + n] }}%
+      </p>
     </template>
   </div>
 </template>
