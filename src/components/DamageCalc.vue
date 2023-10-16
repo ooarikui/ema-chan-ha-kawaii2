@@ -3,16 +3,8 @@
     <p>名前：{{ name }}</p>
     <p>最大与ダメージ：{{ to_max }}</p>
     <p>最小与ダメージ：{{ to_min }}</p>
-    <template v-if="is_pow_seed_shown">
-      <p>最大被ダメージ：{{ from_max }}</p>
-      <p>最小被ダメージ：{{ from_min }}</p>
-    </template>
     <p>最大被ダメージ：{{ from_max }}</p>
     <p>最小被ダメージ：{{ from_min }}</p>
-    <template v-if="is_def_seed_shown">
-      <p>最大被ダメージ：{{ from_max }}</p>
-      <p>最小被ダメージ：{{ from_min }}</p>
-    </template>
     <p>先行率：{{ m_spd[c_spd] }}%</p>
     <template v-if="is_spd_seed_shown">
       <p>先行率（種1）：{{ m_spd[c_spd + 1] }}%</p>
@@ -58,14 +50,6 @@ export default {
     },
     m_spd: {
       type: Object,
-      required: true
-    },
-    is_pow_seed_shown: {
-      type: Boolean,
-      required: true
-    },
-    is_def_seed_shown: {
-      type: Boolean,
       required: true
     },
     is_spd_seed_shown: {

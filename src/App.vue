@@ -47,6 +47,12 @@
             {{ h.name }}
           </option>
         </select>
+        <label>力の種</label>
+        <select v-model="roles_power_seed_value">
+          <option v-for="n of 15" :key="n" :value="n">
+            +{{ n }}
+          </option>
+        </select>
       </div>
       <div class="input">
         <label>サマル</label>
@@ -111,6 +117,12 @@
             {{ h.name }}
           </option>
         </select>
+        <label>守りの種</label>
+        <select v-model="moons_def_seed_value">
+          <option v-for="n of [0, 4, 8]" :key="n" :value="n">
+            +{{ n }}
+          </option>
+        </select>
       </div>
     </div>
     <template v-if="monster && role && saml && moon">
@@ -158,6 +170,7 @@ export default {
       roles_armor: null,
       roles_shield: null,
       roles_head: null,
+      roles_power_seed_value: null,
       samals_weapon: null,
       samals_armor: null,
       samals_shield: null,
@@ -165,7 +178,8 @@ export default {
       moons_weapon: null,
       moons_armor: null,
       moons_shield: null,
-      moons_head: null
+      moons_head: null,
+      moons_def_seed_value: null
     }
   },
   computed: {
@@ -174,12 +188,10 @@ export default {
         {
           ...this.role,
           name: 'ローレシア',
-          weapon: this.roles_weapon.value,
+          weapon: this.roles_weapon.value + this.roles_power_seed_value,
           armor: this.roles_armor.value,
           shield: this.roles_shield.value,
           head: this.roles_head.value,
-          is_pow_seed_shown: false,
-          is_def_seed_shown: false,
           is_spd_seed_shown: false
         },
         {
@@ -189,19 +201,15 @@ export default {
           armor: this.samals_armor.value,
           shield: this.samals_shield.value,
           head: this.samals_head.value,
-          is_pow_seed_shown: false,
-          is_def_seed_shown: false,
           is_spd_seed_shown: false
         },
         {
           ...this.moon,
           name: 'ムーンブルク',
           weapon: this.moons_weapon.value,
-          armor: this.moons_armor.value,
+          armor: this.moons_armor.value + this.moons_def_seed_value,
           shield: this.moons_shield.value,
           head: this.moons_head.value,
-          is_pow_seed_shown: false,
-          is_def_seed_shown: false,
           is_spd_seed_shown: true
         }
       ]
@@ -240,6 +248,7 @@ export default {
     this.roles_armor = this.armors[9]
     this.roles_shield = this.shields[4]
     this.roles_head = this.heads[3]
+    this.roles_power_seed_value = 10
     this.samals_weapon = this.weapons[12]
     this.samals_armor = this.armors[4]
     this.samals_shield = this.shields[1]
@@ -248,6 +257,7 @@ export default {
     this.moons_armor = this.armors[8]
     this.moons_shield = this.shields[0]
     this.moons_head = this.heads[2]
+    this.moons_def_seed_value = 8
   }
 }
 </script>
