@@ -84,7 +84,7 @@ export default {
         return this.to_base
       } else {
         return Math.floor(
-          Math.floor((this.to_base * 7) / 8) + ((Math.floor(this.to_base) / 4 + 1) * 255) / 256
+          Math.floor((this.to_base * 7) / 8) + ((Math.floor(this.to_base / 4) + 1) * 255) / 256
         )
       }
     },
