@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     to_base() {
-      return Math.floor((this.c_atk - this.m_def / 2) / 2)
+      return Math.floor((this.c_atk - Math.floor(this.m_def / 2)) / 2)
     },
     to_max() {
       if (this.to_base < 2) {
@@ -84,7 +84,7 @@ export default {
         return this.to_base
       } else {
         return Math.floor(
-          (this.to_base * 7) / 8 + ((this.to_base / 4 + 1) * 255) / 256
+          Math.floor((this.to_base * 7) / 8) + ((Math.floor(this.to_base) / 4 + 1) * 255) / 256
         )
       }
     },
@@ -95,12 +95,12 @@ export default {
         return this.to_base - 2
       } else {
         return Math.floor(
-          (this.to_base * 7) / 8 + ((this.to_base / 4 + 1) * 0) / 256
+          Math.floor((this.to_base * 7) / 8) + ((Math.floor(this.to_base / 4) + 1) * 0) / 256
         )
       }
     },
     from_base() {
-      return Math.floor((this.m_atk - this.c_def / 2) / 2)
+      return Math.floor((this.m_atk - Math.floor(this.c_def / 2)) / 2)
     },
     from_max() {
       if (this.from_base < 2) {
@@ -109,7 +109,7 @@ export default {
         return this.from_base
       } else {
         return Math.floor(
-          (this.from_base * 7) / 8 + ((this.from_base / 4 + 1) * 255) / 256
+          Math.floor((this.from_base * 7) / 8) + ((Math.floor(this.from_base / 4) + 1) * 255) / 256
         )
       }
     },
@@ -120,7 +120,7 @@ export default {
         return this.from_base - 2
       } else {
         return Math.floor(
-          (this.from_base * 7) / 8 + ((this.from_base / 4 + 1) * 0) / 256
+          Math.floor((this.from_base * 7) / 8) + ((Math.floor(this.from_base / 4) + 1) * 0) / 256
         )
       }
     }
