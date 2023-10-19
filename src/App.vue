@@ -19,7 +19,9 @@
         </div>
         <div class="flex-container">
           <label>最大HP：{{ monster.HP }}</label>
-          <label>最小HP：{{ Math.floor(monster.HP * 0.8) }}</label>
+          <label v-if="!BOSS_MONSTERS.includes(monster.No)">
+            最小HP：{{ Math.floor(monster.HP * 0.8) }}
+          </label>
         </div>
       </div>
       <div>
@@ -285,6 +287,9 @@ export default {
         6: '11.72%',
         7: '0%',
       }
+    },
+    BOSS_MONSTERS() {
+      return['077(4D)','078(4E)','079(4F)','080(50)','081(51)']
     }
   },
   created() {
