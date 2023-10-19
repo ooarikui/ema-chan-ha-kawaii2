@@ -309,8 +309,8 @@ export default {
 }
 </script>
 
-<style>
-div {
+<style scoped>
+section {
   margin-bottom: 4px;
 }
 
