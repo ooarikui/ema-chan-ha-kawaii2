@@ -4,17 +4,47 @@
       <h2>エマちゃんはかわいい2</h2>
     </div>
     <div class="app-input">
-      <div class="input">
-        <label>モンスター</label>
-        <select v-model="monster">
-          <option
-            v-for="monster of monsters"
-            :key="monster.No"
-            :value="monster"
-          >
-            {{ monster.name }}
-          </option>
-        </select>
+      <div class="flex-container">
+        <div class="input">
+          <label>モンスター</label>
+          <select v-model="monster">
+            <option
+              v-for="monster of monsters"
+              :key="monster.No"
+              :value="monster"
+            >
+              {{ monster.name }}
+            </option>
+          </select>
+        </div>
+        <div class="flex-container">
+          <label>最大HP：{{ monster.HP }}</label>
+          <label>最小HP：{{ Math.floor(monster.HP * 0.8) }}</label>
+        </div>
+      </div>
+      <div>
+        <table cellpadding="2">
+          <thead>
+            <tr>
+              <td>攻撃</td>
+              <td>ラリホー</td>
+              <td>マホトーン</td>
+              <td>ザラキ</td>
+              <td>マヌーサ</td>
+              <td>ルカナン</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ REGIST_PERCENTAGE[monster_regist.attack] }}</td>
+              <td>{{ REGIST_PERCENTAGE[monster_regist.sleep] }}</td>
+              <td>{{ REGIST_PERCENTAGE[monster_regist.curse] }}</td>
+              <td>{{ REGIST_PERCENTAGE[monster_regist.ascension] }}</td>
+              <td>{{ REGIST_PERCENTAGE[monster_regist.dazzle] }}</td>
+              <td>{{ REGIST_PERCENTAGE[monster_regist.morimaru] }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="input">
         <label>ローレシア</label>
@@ -49,6 +79,7 @@
         </select>
         <label>力の種</label>
         <select v-model="roles_power_seed_value">
+          <option :value="0">+0</option>
           <option v-for="n of 15" :key="n" :value="n">
             +{{ n }}
           </option>
@@ -147,6 +178,7 @@
 
 <script>
 import { MONSTERS } from '@/assets/data/monsters'
+import { MONSTERS_REGIST } from '@/assets/data/monsters_regist'
 import { ROLE } from '@/assets/data/c1_role'
 import { SAML } from '@/assets/data/c2_saml'
 import { MOON } from '@/assets/data/c3_moon'
@@ -217,6 +249,9 @@ export default {
     monsters() {
       return MONSTERS
     },
+    monster_regist() {
+      return MONSTERS_REGIST.find(m => m.No === this.monster.No)
+    },
     roles() {
       return ROLE
     },
@@ -237,6 +272,18 @@ export default {
     },
     heads() {
       return HEADS
+    },
+    REGIST_PERCENTAGE() {
+      return { 
+        0: '100%',
+        1: '84.77%',
+        2: '59.77%',
+        3: '47.66%',
+        4: '35.94%',
+        5: '23.83%',
+        6: '11.72%',
+        7: '0%',
+      }
     }
   },
   created() {
@@ -263,6 +310,10 @@ export default {
 </script>
 
 <style>
+div {
+  margin-bottom: 4px;
+}
+
 .app-memo {
   margin-bottom: 12px;
 }
@@ -277,5 +328,10 @@ export default {
 
 .results {
   margin-top: 16px;
+}
+
+.flex-container {
+  display: flex;
+  gap: 8px
 }
 </style>

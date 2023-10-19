@@ -10,6 +10,9 @@
         先行率（種{{ n }}）：{{ m_spd[c_spd + n] }}%
       </p>
     </template>
+    <template v-else>
+      <p>先行率：{{ m_spd[c_spd] }}%</p>
+    </template>
   </div>
 </template>
 
