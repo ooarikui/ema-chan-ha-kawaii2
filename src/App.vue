@@ -161,6 +161,7 @@
         <damage-calc
           class="results"
           :name="c.name"
+          :c_hp="Number(c.HP)"
           :c_atk="Number(c.POW) + c.weapon"
           :c_def="Number(c.DEF) + c.armor + c.shield + c.head"
           :c_spd="Number(c.SPD)"

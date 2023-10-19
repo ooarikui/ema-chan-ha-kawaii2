@@ -1,6 +1,9 @@
 <template>
   <div class="damage-calc">
-    <p>名前：{{ name }}</p>
+    <div class="damage-calc-flex-container">
+      <p>名前：{{ name }}</p>
+      <p>最大HP：{{ c_hp }}（木の実なし）</p>
+    </div>
     <p>最大与ダメージ：{{ to_max }}</p>
     <p>最小与ダメージ：{{ to_min }}</p>
     <div class="damage-calc-flex-container">
@@ -34,6 +37,10 @@ export default {
   props: {
     name: {
       type: String,
+      required: true
+    },
+    c_hp: {
+      type: Number,
       required: true
     },
     c_atk: {
