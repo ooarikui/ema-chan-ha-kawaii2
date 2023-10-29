@@ -20,13 +20,11 @@
         <p>スクルト2最小：{{ from_min(2) }}</p>
       </div>
     </div>
+    <p>先行率：{{ m_spd[c_spd] }}%</p>
     <template v-if="is_spd_seed_shown">
       <p v-for="n of 9" :key="n">
         先行率（種{{ n }}）：{{ m_spd[c_spd + n] }}%
       </p>
-    </template>
-    <template v-else>
-      <p>先行率：{{ m_spd[c_spd] }}%</p>
     </template>
   </div>
 </template>
