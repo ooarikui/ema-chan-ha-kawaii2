@@ -49,7 +49,7 @@
         </table>
       </div>
       <div class="input">
-        <label>ローレシア</label>
+        <label>ローレ</label>
         <select v-model="role">
           <option v-for="r of roles" :key="r.Lv" :value="r">
             {{ r.Lv }}
